@@ -1,0 +1,11 @@
+.item_contact {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.contact-list {
+  list-style-type: circle;
+  display: flex;
+  flex-direction: column;
+}
