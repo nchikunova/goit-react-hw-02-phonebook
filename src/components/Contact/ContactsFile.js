@@ -1,22 +1,24 @@
 import PropTypes from 'prop-types';
-import './ContactsFile.css';
+import ContactItem from './ContactItem';
+import s from './ContactsFile.module.css';
 
 const ContactsFile = ({ contacts, onDeleteContact }) => (
-  <ul className="contact-list">
+  <ul className={s.contact_list}>
     {contacts.map(({ id, name, number }) => (
-      <li key={id} className="item-contact">
-        <p className="item-text">{name}</p>
-        <p className="item-text">{number}</p>
-        <button className="item-button" onClick={() => onDeleteContact(id)}>
-          delete
-        </button>
-      </li>
+      <ContactItem
+        key={id}
+        name={name}
+        number={number}
+        id={id}
+        onDeleteContact={onDeleteContact}
+        className={s.item_contact}
+      />
     ))}
   </ul>
 );
 
 ContactsFile.propTypes = {
-  contacts: PropTypes.arrayOf(PropTypes.object),
+  contacts: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string).isRequired),
 };
 
 export default ContactsFile;

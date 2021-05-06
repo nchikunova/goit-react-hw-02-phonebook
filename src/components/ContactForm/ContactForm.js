@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
-import './ContactForm.css';
+import s from './ContactForm.module.css';
+import PropTypes from 'prop-types';
 
 class ContactForm extends Component {
+  static propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+  };
+
   state = {
     name: '',
     number: '',
@@ -25,25 +30,29 @@ class ContactForm extends Component {
   render() {
     const { name, number } = this.state;
     return (
-      <form className="item_form" onSubmit={this.handleSubmit}>
-        <label className="label-data">
+      <form className={s.item_form} onSubmit={this.handleSubmit}>
+        <label className={s.label_data}>
           Name
           <input
-            className="item-input"
+            className={s.item_input}
             type="text"
             name="name"
+            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
             required
             placeholder="Annie Copeland"
             value={name}
             onChange={this.handleChange}
           />
         </label>
-        <label className="label-data">
+        <label className={s.label_data}>
           Phone
           <input
-            className="item-input"
+            className={s.item_input}
             type="text"
             name="number"
+            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+            title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
             required
             placeholder="111-11-11"
             value={number}
@@ -51,7 +60,7 @@ class ContactForm extends Component {
           />
         </label>
         <button
-          className="btn_submit"
+          className={s.btn_submit}
           type="submit"
           disabled={name === '' || number === ''}
         >

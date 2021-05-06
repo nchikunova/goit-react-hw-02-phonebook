@@ -1,9 +1,9 @@
 import React from 'react';
-import ContactsFile from './components/Contact';
+import ContactsFile from './Contact';
 import { v4 as uniqueId } from 'uuid';
-import ContactForm from './components/ContactForm';
-import Filter from './components/Filter';
-import './index.css';
+import ContactForm from './ContactForm';
+import Filter from './Filter';
+import '../index.css';
 
 const contactsTest = [
   { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
