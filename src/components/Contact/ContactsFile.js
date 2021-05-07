@@ -19,6 +19,7 @@ const ContactsFile = ({ contacts, onDeleteContact }) => (
 
 ContactsFile.propTypes = {
   contacts: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string).isRequired),
+  onDeleteContact: PropTypes.func.isRequired,
 };
 
 export default ContactsFile;
